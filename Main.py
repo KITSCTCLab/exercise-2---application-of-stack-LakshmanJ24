@@ -81,10 +81,7 @@ class Evaluate:
                 val1 = self.pop()
                 val2 = self.pop()
                 self.push(str(eval(val2 + i + val1)))
-                return (self.pop())
-expression=24+23*7
-obj = Evaluate(len(expression))
-print ("postfix evaluation: %d"%(obj.evaluatePostfix(expression)))
+                return int(self.pop())
 
 # Do not change the following code
 postfix_expression = input()  # Read postfix expression
