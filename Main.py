@@ -52,7 +52,7 @@ class Evaluate:
       self.top+=1
       self.items[self.top]= operand
 
-  def validate_postfix_expression(self, expression,operand):
+  def validate_postfix_expression(self, expression,tokens):
     """
     Check whether the expression is a valid postfix expression.
     Arguments:
@@ -60,7 +60,7 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
-    if(expression==operand-1):
+    if(expression==tokens-1):
       return 1
     else:
       return 0
