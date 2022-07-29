@@ -74,7 +74,7 @@ class Evaluate:
     Returns:
       The result of evaluated postfix expression.
     """
-    for i in expression
+    for i in expression:
             if i.isdigit():
                 self.push(i)
             else:
