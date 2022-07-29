@@ -81,7 +81,7 @@ class Evaluate:
                 val1 = self.pop()
                 val2 = self.pop()
                 self.push(str(eval(val2 + i + val1)))
-                return int(self.pop())
+                return (self.pop())
 expression=24+23*7
 obj = Evaluate(len(expression))
 print ("postfix evaluation: %d"%(obj.evaluatePostfix(expression)))
