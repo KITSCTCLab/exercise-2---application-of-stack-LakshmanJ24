@@ -60,7 +60,7 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
-    if(expression=operand-1):
+    if(expression==operand-1):
       return 1
     else:
       return 0
