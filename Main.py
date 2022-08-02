@@ -28,7 +28,7 @@ class Evaluate:
       self.top+=1
       self.items[self.top]= operand
 
-  def validate_postfix_expression(self, expression,tokens):
+  def validate_postfix_expression(self, expression):
     c1=0
     c2=0
     for i in expression:
