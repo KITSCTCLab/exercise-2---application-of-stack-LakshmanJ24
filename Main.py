@@ -36,7 +36,7 @@ class Evaluate:
         c1+=1
       else:
           c2+=1
-    if c1&gt;c2 and expression[0].isdigit() and expression[1].isdigit():
+    if c1>c2 and expression[0].isdigit() and expression[1].isdigit():
       return 1
     else:
       return 0
