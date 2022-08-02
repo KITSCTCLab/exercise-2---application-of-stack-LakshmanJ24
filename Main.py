@@ -1,87 +1,58 @@
 class Evaluate:
-  """This class validates and evaluate postfix expression.
-  Attributes:
-      top: An integer which denotes the index of the element at the top of the stack currently.
-      size_of_stack: An integer which represents the size of stack.
-      stack: A List which acts as a Stack.
-  """
   def __init__(self, size):
     self.items = [None]*size
     self.size = size
     self.top = -1  
 
-
-  def __init__(self, size):
-    """Inits Evaluate with top, size_of_stack and stack.
-    Arguments:
-      size_of_stack: An integer to set the size of stack.
-    """
-    self.top = -1
-    self.size_of_stack = size
-    self.stack = []
-
-
   def isEmpty(self):
-    """
-    Check whether the stack is empty.
-    Returns:
-      True if it is empty, else returns False.
-    """
     if self.top == -1 :
       return 1
     else :
       return 0
+    
+  def isFull(self):
+    if self.top==(self.size-1):
+      return 1
+    else:
+      return 0
 
   def pop(self):
-    """
-    Do pop operation if the stack is not empty.
-    Returns:
-      The data which is popped out if the stack is not empty.
-    """
     if not self.isEmpty():
-      del self.items[self.top]
+      t=self.lst[self.top]
+      del self.lst[self.top]
       self.top-=1
+      return t
 
   def push(self, operand):
-    """
-    Push the operand to stack if the stack is not full.
-    Arguments:
-      operand: The operand to be pushed.
-    """
     if not self.is_full():
       self.top+=1
       self.items[self.top]= operand
 
   def validate_postfix_expression(self, expression,tokens):
-    """
-    Check whether the expression is a valid postfix expression.
-    Arguments:
-      expression: A String which represents the expression to be validated.
-    Returns:
-      True if the expression is valid, else returns False.
-    """
-    if(expression==tokens-1):
+    c1=0
+    c2=0
+    for i in expression:
+      if i.isdigit():
+        c1+=1
+      else:
+          c2+=1
+    if c1&gt;c2 and expression[0].isdigit() and expression[1].isdigit():
       return 1
     else:
       return 0
 
-
   def evaluate_postfix_expression(self, expression):
-    """
-    Evaluate the postfix expression
-    Arguments:
-      expression: A String which represents the the expression to be evaluated
-    Returns:
-      The result of evaluated postfix expression.
-    """
     for i in expression:
-            if i.isdigit():
-                self.push(i)
-            else:
-                val1 = self.pop()
-                val2 = self.pop()
-                self.push(str(eval(val2 + i + val1)))
-                return int(self.pop())
+      if i.isdigit():
+        self.push(i)
+        else:
+          v1 = self.pop()
+          v2 = self.pop()
+    if i=='/':
+      self.push(str(eval(v2 + i*2 + v1)))
+    else:
+      self.push(str(eval(v2 + i + v1)))
+      return self.pop()
 
 # Do not change the following code
 postfix_expression = input()  # Read postfix expression
