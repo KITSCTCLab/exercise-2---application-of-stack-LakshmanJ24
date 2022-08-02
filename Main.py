@@ -1,58 +1,103 @@
-class Evaluate:
-  def init (self, size):
-    self.top = -1
-    self.size = size
-    self.lst = [None]*size
+class stackADT:
+    def _init_(self):
+        self.size = 25
+        self.l = [None] * 25
+        self.top = -1
 
-  def isEmpty(self):
-    if self.top == -1:
-      return 1
-    else :
-      return 0
-   
-  def is_full(self):
-    if self.top == (self.size - 1):
-      return 1
-    else :
-      return 0
+    def isFull(self):
+        if self.top == self.size - 1:
+            return 1
+        else:
+            return 0
 
-  def pop(self):
-    if not self.isEmpty():
-      t=self.lst[self.top]
-      del self.lst[self.top]
-      self.top-=1
-      return t
+    def isEmpty(self):
+        if self.top == (-1):
+            return 1
+        else:
+            return 0
 
-  def push(self, operand):
-    if not self.is_full():
-      self.top+=1
-      self.lst[self.top]=operand
+    def Push(self,value):
+        if self.isFull() == 1:
+            print("The Stack is Full!!")
+            print("\n")
+        else:
+            self.top += 1
+            self.l[self.top] = value
+            #print("Push operation is done!\n")
 
-  def validate_postfix_expression(self, expression):
-    c1=0
-    c2=0
-    for i in expression:
-      if i.isdigit():
-        c1+=1
-      else:
-        c2+=1
-    if c1>c2 and expression[0].isdigit() and expression[1].isdigit():
-      return 1
+    def Pop(self):
+        if self.isEmpty() == 1:
+            print("The Stack is Empty!!")
+            print("\n")
+        else:
+            k= self.l[self.top]
+            self.l[self.top] = None
+            self.top -= 1
+            return k
+            #print("Pop operation is done!\n")
+
+    def Peek(self):
+        if self.isEmpty() == 1:
+            print("The Stack is Empty!!")
+        else:
+            print(self.l[self.top])
+
+    def add(self):
+        a1=self.Pop()
+        a2=self.Pop()
+        b=a2+a1
+        self.Push(b)
+
+    def sub(self):
+        a1 = self.Pop()
+        a2 = self.Pop()
+        b = a2 - a1
+        self.Push(b)
+
+    def mul(self):
+        a1 = self.Pop()
+        a2 = self.Pop()
+        b = a2 * a1
+        self.Push(b)
+
+    def div(self):
+        a1 = self.Pop()
+        a2 = self.Pop()
+        b = a2 / a1
+        self.Push(b)
+
+stack = stackADT()
+a=str(input())
+a=a.split(" ")
+operator=['*','^','/','-','+']
+no_of_digits=0
+no_of_op=0
+for i in a:
+    if i.isdigit():
+        no_of_digits+=1
+    elif i in operator:
+        no_of_op+=1
     else:
-      return 0
+        pass
 
-  def evaluate_postfix_expression(self, expression):
-    for i in expression:
-      if i.isdigit():
-        self.push(i)
-      else:
-        v1 = self.pop()
-        v2 = self.pop()
-    if i=='/':
-      self.push(str(eval(v2 + i*2 + v1)))
-    else:
-      self.push(str(eval(v2 + i + v1)))
-      return self.pop()
+if no_of_digits== (no_of_op+1):
+
+    for i in a:
+        if i.isdigit():
+            stack.Push(int(i))
+        elif i == '+':
+            stack.add()
+        elif i == '-':
+            stack.sub()
+        elif i == '*':
+            stack.mul()
+
+        elif i == '/':
+            stack.div()
+
+    print(int(stack.l[0]))
+else:
+    print('Invalid postfix expression')
 
 # Do not change the following code
 postfix_expression = input()  # Read postfix expression
