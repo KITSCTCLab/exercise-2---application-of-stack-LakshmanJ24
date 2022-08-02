@@ -1,5 +1,5 @@
 class Evaluate:
-    def _init_(self, size):
+    def __init__(self, size):
         self.top = -1
         self.size = size
         self.lst = [None]*size
