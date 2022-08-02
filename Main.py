@@ -18,8 +18,8 @@ class Evaluate:
 
   def pop(self):
     if not self.isEmpty():
-      t=self.lst[self.top]
-      del self.lst[self.top]
+      t=self.items[self.top]
+      del self.items[self.top]
       self.top-=1
       return t
 
