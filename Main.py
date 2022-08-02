@@ -45,9 +45,9 @@ class Evaluate:
     for i in expression:
       if i.isdigit():
         self.push(i)
-        else:
-          v1 = self.pop()
-          v2 = self.pop()
+      else:
+        v1 = self.pop()
+        v2 = self.pop()
     if i=='/':
       self.push(str(eval(v2 + i*2 + v1)))
     else:
