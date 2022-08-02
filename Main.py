@@ -24,7 +24,7 @@ class Evaluate:
       return t
 
   def push(self, operand):
-    if not self.is_full():
+    if not self.isFull():
       self.top+=1
       self.items[self.top]= operand
 
